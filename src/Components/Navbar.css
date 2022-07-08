@@ -1,0 +1,18 @@
+.Navbar
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+.Nav ul
+{
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+    background: #2ecc71;
+}
+.nav-link
+{
+    color: white;
+}
