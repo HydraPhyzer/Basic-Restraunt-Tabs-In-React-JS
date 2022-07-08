@@ -7,27 +7,42 @@ import { useState, useEffect } from 'react'
 
 const App = () => {
     let [Nav, setNav] = useState([]);
+    let [Posts, setPosts] = useState([]);
 
     let DisplayNav = () => {
         let TempNav = [...new Set(
             Menu.map((Elem) => {
                 return Elem.category;
             })
-        ),"All"];
+        ), "All"];
 
         setNav(TempNav)
     }
 
+    let AssignCat = (Val) => {
+        if(Val!=='All')
+        {
+            let TempPost = Menu.filter((Elem) => {
+                return Elem.category === Val;  
+            })
+            setPosts(TempPost)
+        }
+        else
+        {
+            setPosts(Menu)
+        }
+    }
     useEffect(() => {
         DisplayNav();
-    },[])
+        AssignCat('Breakfast');
+    }, [])
 
 
     return (
         <div>
-            <Navbar Nav={Nav} />
+            <Navbar Nav={Nav} GetCat={AssignCat} />
 
-            <Post/>
+            <Post Posts={Posts} />
         </div>
     )
 }

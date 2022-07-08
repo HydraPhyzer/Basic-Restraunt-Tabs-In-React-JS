@@ -1,24 +1,30 @@
 import React from 'react'
 import './Post.css'
 
-const Post = () => {
-  return (
-    <div className='Post'>
-        <div className="Post-Body">
-            <div className="Head">
-                <span className='Num'>1</span>
-                <span className='Name'>Name</span>
-                <span className='Cat'>Category</span>
-            </div>
-            <div className="Image">
-                <img src="/Images/maggi.jpg" alt="" />
-            </div>
-            <div className="Desc">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quidem sapiente facilis, tempore ea id delectus voluptatibus nulla ab aspernatur.</p>
-            </div>
+const Post = (Props) => {
+    return (
+        <div className='Post'>
+            {
+                Props.Posts.map(element => {
+                    return(
+                        <div className="Post-Body">
+                            <div className="Head">
+                                <span className='Num'>{element.id}</span>
+                                <span className='Name'>{element.name}</span>
+                                <span className='Cat'>{element.category}</span>
+                            </div>
+                            <div className="Image">
+                                <img src={element.image} alt="" />
+                            </div>
+                            <div className="Desc">
+                                <p>{element.description}</p>
+                            </div>
+                        </div>
+                    )
+                })
+            }
         </div>
-    </div>
-  )
+    )
 }
 
 export default Post
